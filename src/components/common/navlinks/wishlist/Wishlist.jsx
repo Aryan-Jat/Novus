@@ -6,8 +6,9 @@ import Navbar from "../../../layout/Navbar";
 import Footer from "../../../layout/Footer";
 import ProductCard from "../../../product/ProductCard";
 import products from "../../../../data/products";
-import { useWishlist } from "../../../../context/WishlistContext";
-import { useBag, formatPrice } from "../../../../context/BagContext";
+import { useWishlist } from "../../../../hooks/useWishlist";
+import { useBag } from "../../../../hooks/useBag";
+import { formatPrice } from "../../../../utils/priceUtils";
 import "./Wishlist.css";
 
 export default function Wishlist() {

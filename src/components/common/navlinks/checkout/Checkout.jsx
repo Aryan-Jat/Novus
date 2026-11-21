@@ -4,7 +4,9 @@ import { ArrowRight, ArrowLeft, Check } from "lucide-react";
 
 import Navbar from "../../../layout/Navbar";
 import Footer from "../../../layout/Footer";
-import { useBag, formatPrice } from "../../../../context/BagContext";
+import { formatPrice } from "../../../../utils/priceUtils";
+import { useBag } from "../../../../hooks/useBag";
+
 import "./Checkout.css";
 
 const initialForm = {

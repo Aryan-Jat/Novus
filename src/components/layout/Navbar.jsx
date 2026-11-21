@@ -9,9 +9,9 @@ import {
   X,
 } from "lucide-react";
 
-import { useBag } from "../../context/BagContext";
-import { useWishlist } from "../../context/WishlistContext";
-import "./Navbar.css";
+import { useBag } from "../../hooks/useBag";
+
+import { useWishlist } from "../../hooks/useWishlist";import "./Navbar.css";
 
 const navLinks = [
   { label: "New Arrivals", to: "/new" },

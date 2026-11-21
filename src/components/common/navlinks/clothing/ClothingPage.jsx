@@ -20,8 +20,7 @@ import {
   clothingSortOptions,
   clothingProducts,
 } from "./ClothingData";
-import { useWishlist } from "../../../../context/WishlistContext";
-import { useBag } from "../../../../context/BagContext";
+import { useWishlist } from "../../../../hooks/useWishlist";import { useBag } from "../../../../hooks/useBag";
 import "./ClothingPage.css";
 
 const ITEMS_PER_PAGE = 12;

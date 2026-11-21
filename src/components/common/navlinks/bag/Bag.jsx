@@ -1,3 +1,4 @@
+
 import React, { useEffect, useMemo } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight, Minus, Plus, X } from "lucide-react";
@@ -6,7 +7,10 @@ import Navbar from "../../../layout/Navbar";
 import Footer from "../../../layout/Footer";
 import ProductCard from "../../../product/ProductCard";
 import products from "../../../../data/products";
-import { useBag, formatPrice } from "../../../../context/BagContext";
+
+import { useBag } from "../../../../hooks/useBag";
+import { formatPrice } from "../../../../utils/priceUtils";
+
 import "./Bag.css";
 
 export default function Bag() {
@@ -25,7 +29,9 @@ export default function Bag() {
 
   const recommendations = useMemo(() => {
     if (!items.length) return [];
+
     const idsInBag = new Set(items.map((item) => item.id));
+
     return products.filter((p) => !idsInBag.has(p.id)).slice(0, 4);
   }, [items]);
 
@@ -83,8 +89,11 @@ export default function Bag() {
                           <span className="bag-item__cat">
                             {item.category || "Novus"}
                           </span>
+
                           <h3 className="bag-item__name">
-                            <Link to={`/product/${item.id}`}>{item.name}</Link>
+                            <Link to={`/product/${item.id}`}>
+                              {item.name}
+                            </Link>
                           </h3>
                         </div>
 
@@ -105,6 +114,7 @@ export default function Bag() {
                             <dd>{item.size}</dd>
                           </div>
                         )}
+
                         {item.color && (
                           <div className="bag-item__meta-row">
                             <dt>Color</dt>
@@ -182,11 +192,12 @@ export default function Bag() {
                 </dl>
 
                 <Link to="/checkout" className="bag__checkout">
-  <span>Checkout</span>
-  <span className="bag__checkout-icon" aria-hidden="true">
-    <ArrowRight size={15} strokeWidth={1.8} />
-  </span>
-</Link>
+                  <span>Checkout</span>
+
+                  <span className="bag__checkout-icon" aria-hidden="true">
+                    <ArrowRight size={15} strokeWidth={1.8} />
+                  </span>
+                </Link>
 
                 <p className="bag__summary-note">
                   Taxes and shipping calculated at checkout.
@@ -197,7 +208,9 @@ export default function Bag() {
         ) : (
           <section className="bag__empty">
             <div className="bag__wrap bag__empty-inner">
-              <span className="bag__empty-eyebrow">Nothing here yet</span>
+              <span className="bag__empty-eyebrow">
+                Nothing here yet
+              </span>
 
               <h2 className="bag__empty-title">
                 <span>Your bag is</span>
@@ -211,6 +224,7 @@ export default function Bag() {
 
               <Link to="/new" className="bag__empty-cta">
                 <span>Explore New Arrivals</span>
+
                 <span className="bag__empty-cta-icon" aria-hidden="true">
                   <ArrowRight size={15} strokeWidth={1.8} />
                 </span>
@@ -223,11 +237,17 @@ export default function Bag() {
           <section className="bag__recs">
             <div className="bag__wrap">
               <header className="bag__recs-head">
-                <span className="bag__recs-eyebrow">You may also like</span>
+                <span className="bag__recs-eyebrow">
+                  You may also like
+                </span>
 
                 <Link to="/new" className="bag__recs-link">
                   <span>View all</span>
-                  <ArrowRight size={14} strokeWidth={1.8} aria-hidden="true" />
+                  <ArrowRight
+                    size={14}
+                    strokeWidth={1.8}
+                    aria-hidden="true"
+                  />
                 </Link>
               </header>
 
