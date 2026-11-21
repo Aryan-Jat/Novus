@@ -1,0 +1,271 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&family=Playfair+Display:wght@400;500&display=swap");
+
+:root {
+  --cream: #faf7f0;
+  --cream-card: #f1ebe1;
+  --brown: #3b302a;
+  --cocoa: #8b6f5a;
+  --muted: #756b63;
+  --line: rgba(59, 48, 42, 0.14);
+}
+
+.new-arrivals {
+  width: 100%;
+  box-sizing: border-box;
+
+  padding: 90px clamp(20px, 5vw, 72px);
+
+  background: var(--cream);
+  color: var(--brown);
+}
+
+.new-arrivals__header {
+  width: min(100%, 1450px);
+
+  margin: 0 auto 48px;
+
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+
+  gap: 30px;
+}
+
+.new-arrivals__eyebrow {
+  margin: 0 0 15px;
+
+  color: var(--cocoa);
+
+  font-family: "DM Sans", sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.new-arrivals__title {
+  margin: 0;
+
+  color: var(--brown);
+
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: clamp(40px, 4.5vw, 64px);
+  font-weight: 400;
+  line-height: 1;
+
+  letter-spacing: -0.035em;
+}
+
+.new-arrivals__view-all {
+  padding-bottom: 5px;
+
+  color: var(--brown);
+  border-bottom: 1px solid var(--brown);
+
+  text-decoration: none;
+
+  font-family: "DM Sans", sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+
+  transition:
+    color 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.new-arrivals__view-all:hover {
+  color: var(--cocoa);
+  border-color: var(--cocoa);
+}
+
+.new-arrivals__grid {
+  width: min(100%, 1450px);
+
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+
+  gap: 20px;
+}
+
+.new-product {
+  min-width: 0;
+}
+
+.new-product__image {
+  position: relative;
+
+  width: 100%;
+  aspect-ratio: 0.78;
+
+  overflow: hidden;
+
+  background: var(--cream-card);
+}
+
+.new-product__image img {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  transition: transform 0.5s ease;
+}
+
+.new-product:hover .new-product__image img {
+  transform: scale(1.025);
+}
+
+.new-product__wishlist {
+  position: absolute;
+
+  top: 14px;
+  right: 14px;
+
+  width: 36px;
+  height: 36px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+
+  border: 0;
+  border-radius: 50%;
+
+  background: var(--cream);
+
+  color: var(--brown);
+
+  cursor: pointer;
+
+  transition:
+    background 0.3s ease,
+    color 0.3s ease;
+}
+
+.new-product__wishlist:hover {
+  background: var(--brown);
+  color: var(--cream);
+}
+
+.new-product__wishlist.is-active {
+  background: var(--brown);
+  color: var(--cream);
+}
+
+.new-product__info {
+  padding-top: 15px;
+}
+
+.new-product__info h3 {
+  margin: 0;
+
+  color: var(--brown);
+
+  font-family: "DM Sans", sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.4;
+
+  letter-spacing: 0.01em;
+}
+
+.new-product__info p {
+  margin: 6px 0 0;
+
+  color: var(--muted);
+
+  font-family: "DM Sans", sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+@media (max-width: 1000px) {
+  .new-arrivals {
+    padding: 75px 24px;
+  }
+
+  .new-arrivals__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 30px 16px;
+  }
+}
+
+@media (max-width: 700px) {
+  .new-arrivals {
+    padding: 65px 20px 75px;
+  }
+
+  .new-arrivals__header {
+    margin-bottom: 35px;
+  }
+
+  .new-arrivals__title {
+    font-size: clamp(36px, 10vw, 50px);
+  }
+
+  .new-arrivals__grid {
+    gap: 28px 12px;
+  }
+
+  .new-product__wishlist {
+    top: 9px;
+    right: 9px;
+
+    width: 33px;
+    height: 33px;
+  }
+
+  .new-product__wishlist svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .new-product__info {
+    padding-top: 11px;
+  }
+
+  .new-product__info h3 {
+    font-size: 12px;
+  }
+
+  .new-product__info p {
+    margin-top: 5px;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 420px) {
+  .new-arrivals {
+    padding: 55px 16px 65px;
+  }
+
+  .new-arrivals__grid {
+    gap: 25px 10px;
+  }
+
+  .new-product__image {
+    aspect-ratio: 0.76;
+  }
+
+  .new-product__info h3,
+  .new-product__info p {
+    font-size: 11px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .new-product__image img {
+    transition: none;
+  }
+}

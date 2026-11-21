@@ -1,0 +1,16 @@
+.brand-newsletter {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.brand-newsletter > * {
+  width: 100%;
+  min-width: 0;
+}
+
+@media (max-width: 760px) {
+  .brand-newsletter {
+    grid-template-columns: 1fr;
+  }
+}

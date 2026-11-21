@@ -1,0 +1,137 @@
+.product-sort {
+    position: relative;
+  }
+  
+  .product-sort__trigger {
+    height: 42px;
+  
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+  
+    padding: 0 15px;
+  
+    border: 1px solid #dcd8d0;
+  
+    background: transparent;
+    color: #1c1c1c;
+  
+    font-family: "Inter", sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.13em;
+  
+    cursor: pointer;
+  
+    transition:
+      border-color 250ms ease,
+      background 250ms ease;
+  }
+  
+  .product-sort__trigger:hover {
+    border-color: #1c1c1c;
+  }
+  
+  .product-sort__trigger svg {
+    transition: transform 250ms ease;
+  }
+  
+  .product-sort__trigger svg.is-open {
+    transform: rotate(180deg);
+  }
+  
+  .product-sort__menu {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    z-index: 20;
+  
+    width: 220px;
+  
+    padding: 8px;
+  
+    border: 1px solid #dcd8d0;
+  
+    background: #f8f6f2;
+  
+    box-shadow: 0 12px 35px rgba(28, 28, 28, 0.08);
+  }
+  
+  .product-sort__option {
+    width: 100%;
+    min-height: 42px;
+  
+    display: flex;
+    align-items: center;
+    gap: 11px;
+  
+    padding: 0 11px;
+  
+    border: 0;
+  
+    background: transparent;
+    color: #6f6f6f;
+  
+    font-family: "Inter", sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+  
+    text-align: left;
+  
+    cursor: pointer;
+  
+    transition:
+      color 200ms ease,
+      background 200ms ease;
+  }
+  
+  .product-sort__option:hover {
+    background: #eeeae4;
+    color: #1c1c1c;
+  }
+  
+  .product-sort__option.is-active {
+    color: #1c1c1c;
+    font-weight: 500;
+  }
+  
+  .product-sort__radio {
+    width: 13px;
+    height: 13px;
+  
+    flex-shrink: 0;
+  
+    border: 1px solid #aaa59d;
+    border-radius: 50%;
+  
+    transition:
+      border-color 200ms ease,
+      box-shadow 200ms ease,
+      background 200ms ease;
+  }
+  
+  .product-sort__option.is-active .product-sort__radio {
+    border-color: #a88989;
+    background: #a88989;
+    box-shadow: inset 0 0 0 3px #f8f6f2;
+  }
+  
+  @media (max-width: 640px) {
+    .product-sort {
+      flex: 1;
+    }
+  
+    .product-sort__trigger {
+      width: 100%;
+      height: 46px;
+    }
+  
+    .product-sort__menu {
+      top: auto;
+      right: 0;
+      bottom: calc(100% + 8px);
+  
+      width: min(280px, 80vw);
+    }
+  }

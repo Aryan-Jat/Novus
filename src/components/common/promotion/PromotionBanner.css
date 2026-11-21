@@ -1,0 +1,370 @@
+.promotion-slider {
+  position: relative;
+  width: 100%;
+  height: clamp(420px, 52vw, 600px);
+  overflow: hidden;
+  background: #111111;
+}
+
+.promotion-slider__track {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.promotion-slide {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    opacity 0.8s ease,
+    visibility 0.8s ease;
+}
+
+.promotion-slide.is-active {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+  z-index: 2;
+}
+
+.promotion-slide__image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center;
+}
+
+.promotion-slide__overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.62) 0%,
+      rgba(0, 0, 0, 0.38) 38%,
+      rgba(0, 0, 0, 0.12) 72%,
+      rgba(0, 0, 0, 0.08) 100%
+    );
+}
+
+.promotion-slide__content {
+  position: absolute;
+  left: clamp(28px, 7vw, 110px);
+  bottom: clamp(70px, 10vw, 105px);
+  z-index: 3;
+  width: min(520px, calc(100% - 56px));
+  color: #ffffff;
+}
+
+.promotion-slide__eyebrow {
+  margin: 0 0 13px;
+  font-family:
+    Inter,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.promotion-slide__content h2 {
+  margin: 0;
+  max-width: 520px;
+  font-family:
+    Inter,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+  font-size: clamp(42px, 6vw, 78px);
+  font-weight: 500;
+  line-height: 0.98;
+  letter-spacing: -0.045em;
+  color: #ffffff;
+  opacity: 0;
+  transform: translateY(25px);
+}
+
+.promotion-slide__description {
+  max-width: 390px;
+  margin: 18px 0 0;
+  font-family:
+    Inter,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.6;
+  letter-spacing: 0.01em;
+  color: rgba(255, 255, 255, 0.9);
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.promotion-slide__button {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 22px;
+  padding: 12px 17px;
+  background: #ffffff;
+  color: #1d1d1d;
+  border: 1px solid #ffffff;
+  text-decoration: none;
+  font-family:
+    Inter,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+  font-size: 9px;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    background 0.3s ease,
+    color 0.3s ease,
+    gap 0.3s ease,
+    transform 0.3s ease;
+}
+
+.promotion-slide__button:hover {
+  background: transparent;
+  color: #ffffff;
+  gap: 15px;
+  transform: translateY(-2px);
+}
+
+.promotion-slide__button svg {
+  transition: transform 0.3s ease;
+}
+
+.promotion-slide__button:hover svg {
+  transform: translate(3px, -3px);
+}
+
+.promotion-slide.is-active .promotion-slide__eyebrow {
+  animation:
+    promotionTextIn 0.7s cubic-bezier(0.22, 1, 0.36, 1)
+    0.08s forwards;
+}
+
+.promotion-slide.is-active .promotion-slide__content h2 {
+  animation:
+    promotionTextIn 0.7s cubic-bezier(0.22, 1, 0.36, 1)
+    0.18s forwards;
+}
+
+.promotion-slide.is-active .promotion-slide__description {
+  animation:
+    promotionTextIn 0.7s cubic-bezier(0.22, 1, 0.36, 1)
+    0.35s forwards;
+}
+
+.promotion-slide.is-active .promotion-slide__button {
+  animation:
+    promotionTextIn 0.7s cubic-bezier(0.22, 1, 0.36, 1)
+    0.52s forwards;
+}
+
+@keyframes promotionTextIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.promotion-slider__dots {
+  position: absolute;
+  left: clamp(28px, 7vw, 110px);
+  bottom: 28px;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.promotion-slider__dot {
+  width: 24px;
+  height: 2px;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: rgba(255, 255, 255, 0.4);
+  cursor: pointer;
+  transition:
+    width 0.3s ease,
+    background 0.3s ease;
+}
+
+.promotion-slider__dot.is-active {
+  width: 42px;
+  background: #ffffff;
+}
+
+.promotion-slider__dot:hover {
+  background: #ffffff;
+}
+
+@media (max-width: 900px) {
+  .promotion-slider {
+    height: 500px;
+  }
+
+  .promotion-slide__content {
+    left: 6%;
+    bottom: 80px;
+  }
+
+  .promotion-slide__content h2 {
+    font-size: clamp(40px, 8vw, 62px);
+  }
+
+  .promotion-slide__overlay {
+    background:
+      linear-gradient(
+        90deg,
+        rgba(0, 0, 0, 0.64) 0%,
+        rgba(0, 0, 0, 0.4) 55%,
+        rgba(0, 0, 0, 0.15) 100%
+      );
+  }
+
+  .promotion-slider__dots {
+    left: 6%;
+  }
+}
+
+@media (max-width: 640px) {
+  .promotion-slider {
+    height: 430px;
+  }
+
+  .promotion-slide__image {
+    object-position: center;
+  }
+
+  .promotion-slide__overlay {
+    background:
+      linear-gradient(
+        90deg,
+        rgba(0, 0, 0, 0.65) 0%,
+        rgba(0, 0, 0, 0.42) 60%,
+        rgba(0, 0, 0, 0.18) 100%
+      );
+  }
+
+  .promotion-slide__content {
+    left: 22px;
+    right: 22px;
+    bottom: 67px;
+    width: auto;
+  }
+
+  .promotion-slide__eyebrow {
+    margin-bottom: 10px;
+    font-size: 8px;
+    letter-spacing: 0.17em;
+  }
+
+  .promotion-slide__content h2 {
+    max-width: 340px;
+    font-size: clamp(36px, 11vw, 50px);
+    line-height: 1;
+    letter-spacing: -0.04em;
+  }
+
+  .promotion-slide__description {
+    max-width: 290px;
+    margin-top: 13px;
+    font-size: 11px;
+    line-height: 1.55;
+  }
+
+  .promotion-slide__button {
+    margin-top: 17px;
+    padding: 11px 15px;
+    font-size: 8px;
+  }
+
+  .promotion-slider__dots {
+    left: 22px;
+    bottom: 25px;
+    gap: 7px;
+  }
+
+  .promotion-slider__dot {
+    width: 18px;
+  }
+
+  .promotion-slider__dot.is-active {
+    width: 32px;
+  }
+}
+
+@media (max-width: 380px) {
+  .promotion-slider {
+    height: 400px;
+  }
+
+  .promotion-slide__content {
+    left: 18px;
+    right: 18px;
+    bottom: 62px;
+  }
+
+  .promotion-slide__content h2 {
+    font-size: 34px;
+  }
+
+  .promotion-slide__description {
+    font-size: 10px;
+  }
+
+  .promotion-slider__dots {
+    left: 18px;
+    bottom: 22px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .promotion-slide,
+  .promotion-slide__button,
+  .promotion-slide__button svg,
+  .promotion-slider__dot {
+    transition: none;
+  }
+
+  .promotion-slide.is-active .promotion-slide__eyebrow,
+  .promotion-slide.is-active .promotion-slide__content h2,
+  .promotion-slide.is-active .promotion-slide__description,
+  .promotion-slide.is-active .promotion-slide__button {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
